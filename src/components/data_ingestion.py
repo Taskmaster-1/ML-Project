@@ -3,8 +3,6 @@ import sys
 from src.exception import CustomException
 from src.logger import logging
 import pandas as pd
-import numpy as np
-from numpy import array
 
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
@@ -41,7 +39,7 @@ class DataIngestion:
 
             test_set.to_csv(self.ingestion_config.test_data_path,index=False,header=True)
 
-            logging.info("Inmgestion of the data iss completed")
+            logging.info("Ingestion of the data iss completed")
 
             return(
                 self.ingestion_config.train_data_path,
@@ -49,7 +47,7 @@ class DataIngestion:
 
             )
         except Exception as e:
-            raise CustomException(e,sys)
+            raise CustomException(e,sys) from e
         
 if __name__=="__main__":
     obj=DataIngestion()
@@ -60,3 +58,6 @@ if __name__=="__main__":
 
     modeltrainer=ModelTrainer()
     print(modeltrainer.initiate_model_trainer(train_arr,test_arr))
+
+
+
