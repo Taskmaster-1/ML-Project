@@ -7,4 +7,5 @@ catboost>=1.0.6
 xgboost
 dill
 flask
+gunicorn==20.1.0
 #-e .
